@@ -10,7 +10,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Score />
-        Options:
         <Picks />
         Possible Maindeck:
         <Deck />

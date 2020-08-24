@@ -18,7 +18,6 @@ function pick(state, guess) {
 }
 
 function setDraft(state = {}, id) {
-  const logUrl = "https://www.17lands.com/draft/" + id;
   const log = require('./' + id);
   const cards = log.picks[0].available;
   return {
@@ -32,7 +31,7 @@ function setDraft(state = {}, id) {
       "total": 0 
     },
     "draft": log,
-    "logUrl": logUrl
+    "id": id
   };
 }
 
