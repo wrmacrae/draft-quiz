@@ -1,0 +1,60 @@
+.pick-options {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 149px;
+  position: relative;
+  margin-right: 3px;
+  margin-left: 3px;
+}
+
+.card-small {
+  width: 149px;
+}
+
+.card div.card-big {
+    display: none;
+}
+
+.card:hover div.card-big {
+  z-index: 10;
+  display: inline;
+  position: absolute;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.72);
+  border-style: solid;
+  border-width: 5px;
+  border-radius: 5px;
+  border-color: #4d4d4d;
+  left: 20px;
+  top: 46px;
+}
+
+.card:hover img.card-big {
+    width: 340px;
+}
+
+.deck {
+    display: flex;
+    flex-direction: row;
+}
+
+.pile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.under {
+    width: 149px;
+    height: 26px;
+    object-fit: cover;
+    object-position: top;
+}
+.over {
+    width: 149px;
+    height: 208px;
+    object-position: top;
+}
