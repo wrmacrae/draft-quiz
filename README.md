@@ -1,3 +1,5 @@
+Use the app hre: https://wrmacrae.github.io/draft-quiz/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
