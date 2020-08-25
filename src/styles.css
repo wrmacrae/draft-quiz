@@ -5,6 +5,8 @@
 }
 
 .card {
+  display: block;
+  vertical-align: bottom;
   width: 149px;
   position: relative;
   margin-right: 3px;
@@ -12,8 +14,13 @@
 }
 
 .card-small {
+  display: block;
   width: 149px;
 }
+
+.card-big {
+/*  vertical-align: bottom;
+*/}
 
 .card div.card-big {
     display: none;
@@ -21,7 +28,7 @@
 
 .card:hover div.card-big {
   z-index: 10;
-  display: inline;
+  display: block;
   position: absolute;
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.72);
   border-style: solid;
@@ -29,11 +36,19 @@
   border-radius: 5px;
   border-color: #4d4d4d;
   left: 20px;
-  top: 46px;
 }
 
-.card:hover img.card-big {
-    width: 340px;
+.preview-below {
+  top: 70px;  
+}
+
+.preview-above {
+  top: -510px;
+}
+
+img.card-big {
+  display: block;
+  width: 340px;
 }
 
 .correct-overlay {
@@ -42,6 +57,7 @@
   height: 208px;
   position: absolute;
   left: 0;
+  top: 0;
   overflow: hidden;
 }
 
@@ -51,7 +67,99 @@
   height: 208px;
   position: absolute;
   left: 0;
+  top: 0;
   overflow: hidden;
+}
+
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #7ac142;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  margin: 40px auto;
+  box-shadow: inset 0px 0px 0px #7ac142;
+  animation: fillgreen .4s ease-in-out .4s forwards, scale .3s ease-in-out 0.9s both;
+}
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+.xmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #ff0000;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.xmark {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  margin: 40px auto;
+  box-shadow: inset 0px 0px 0px #ff0000;
+  animation: fillred .4s ease-in-out .4s forwards, scale .3s ease-in-out 0.9s both;
+}
+
+.xmark__one {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.4s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+}
+
+.xmark__two {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes scale {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+@keyframes fillgreen {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #7ac142;
+  }
+}
+@keyframes fillred {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #ff0000;
+  }
 }
 
 .deck {

@@ -13,7 +13,7 @@ export class Picks extends React.PureComponent {
     this.props.makeGuess(value);
     setTimeout(() => {
       this.props.makePick();
-    }, 3000)  }
+    }, 2000)  }
 
   render() {
     if (this.props.cards.length === 0) {
@@ -31,12 +31,25 @@ export class Picks extends React.PureComponent {
       <div className="pick-options">
       {this.props.cards.map((value, index) => { 
         return <div className="card" key={index}>
-          <div className="card-big">
+          <div className="card-big preview-below">
             <img className="card-big" onClick={() => this.handleClick(value)} src={value} />
           </div>
           <img className="card-small" onClick={() => this.handleClick(value)} src={value} />
-          {this.props.guess && this.props.answer === value ? <span className="correct-overlay" /> : ""}
-          {this.props.guess === value && this.props.answer !== value ? <span className="wrong-overlay" /> : ""}
+          {this.props.guess && this.props.answer === value ?
+          <span className="correct-overlay">
+            <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+              <circle className="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+              <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+            </svg>
+          </span> : ""}
+          {this.props.guess === value && this.props.answer !== value ?
+          <span className="wrong-overlay">
+            <svg className="xmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+              <circle className="xmark__circle" cx="26" cy="26" r="25" fill="none"/>
+              <path className="xmark__one" fill="none" d="M18 18l16 16"/>
+              <path className="xmark__two" fill="none" d="M34 18l-16 16"/>
+            </svg>            
+          </span> : ""}
         </div>;
       })}
       </div>
