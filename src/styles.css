@@ -36,6 +36,24 @@
     width: 340px;
 }
 
+.correct-overlay {
+  background-color: rgba(0, 255, 64, 0.3);
+  width: 149px;
+  height: 208px;
+  position: absolute;
+  left: 0;
+  overflow: hidden;
+}
+
+.wrong-overlay {
+  background-color: rgba(255, 0, 0, 0.3);
+  width: 149px;
+  height: 208px;
+  position: absolute;
+  left: 0;
+  overflow: hidden;
+}
+
 .deck {
     display: flex;
     flex-direction: row;

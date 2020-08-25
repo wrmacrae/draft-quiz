@@ -1,9 +1,20 @@
 import React from 'react';
-import { makePick } from '../actions';
+import { makeGuess, makePick } from '../actions';
 import '../styles.css';
 import { connect } from 'react-redux'
 
+
 export class Picks extends React.PureComponent {
+
+  handleClick(value) {
+    if(this.props.guess !== "") {
+      return
+    }
+    this.props.makeGuess(value);
+    setTimeout(() => {
+      this.props.makePick();
+    }, 3000)  }
+
   render() {
     if (this.props.cards.length === 0) {
       const randomQuiz = window.location.href.split('?')[0];
@@ -21,9 +32,11 @@ export class Picks extends React.PureComponent {
       {this.props.cards.map((value, index) => { 
         return <div className="card" key={index}>
           <div className="card-big">
-            <img className="card-big" onClick={() => this.props.pick(value)} src={value} />
+            <img className="card-big" onClick={() => this.handleClick(value)} src={value} />
           </div>
-          <img className="card-small" onClick={() => this.props.pick(value)} src={value} />
+          <img className="card-small" onClick={() => this.handleClick(value)} src={value} />
+          {this.props.guess && this.props.answer === value ? <span className="correct-overlay" /> : ""}
+          {this.props.guess === value && this.props.answer !== value ? <span className="wrong-overlay" /> : ""}
         </div>;
       })}
       </div>
@@ -34,10 +47,13 @@ export class Picks extends React.PureComponent {
 const mapStateToProps = state => ({
   cards: state.cards,
   id: state.id,
+  guess: state.guess,
+  answer: state.answer,
 });
 
 const mapDispatchToProps = dispatch => ({
-  pick: guess => dispatch(makePick(guess))
+  makeGuess: guess => dispatch(makeGuess(guess)),
+  makePick: () => dispatch(makePick()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Picks);
