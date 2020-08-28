@@ -13,7 +13,7 @@ function getId() {
   if (idFromParam) {
     return idFromParam
   }
-  const logs = require('./akr');
+  const logs = require('./logs');
   const ids = Object.keys(logs);
   return idFromParam || ids[Math.floor(Math.random() * ids.length)];  
 }

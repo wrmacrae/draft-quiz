@@ -1,7 +1,7 @@
 import { SET_DRAFT, MAKE_GUESS, MAKE_PICK } from './actions'
 
 function setDraft(state = {}, id) {
-  const logs = require('./akr');
+  const logs = require('./logs');
   const log = logs[id];
   const cards = log.picks[0].available;
   const answer = log.picks[0].pick;
