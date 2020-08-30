@@ -31,10 +31,10 @@ export class Picks extends React.PureComponent {
       <div className="pick-options">
       {this.props.cards.map((value, index) => { 
         return <div className="card" key={index}>
-          <div className="card-big preview-below">
-            <img className="card-big" onClick={() => this.handleClick(value)} src={value} />
+          <div className="card-big preview-below clickable" onClick={() => this.handleClick(value)}>
+            <img className="card-big"  src={value} />
           </div>
-          <img className="card-small" onClick={() => this.handleClick(value)} src={value} />
+          <img className="card-small clickable" onClick={() => this.handleClick(value)} src={value} />
           {this.props.guess && this.props.answer === value ?
           <span className="correct-overlay">
             <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">

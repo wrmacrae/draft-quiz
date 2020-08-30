@@ -6,6 +6,20 @@ img, svg {
     user-select: none;
 }
 
+.navbar {
+  width: 100%;
+  display: block;
+  flex-direction: row;
+  background: #000;
+}
+
+.set-icon {
+  margin: 5px;
+  fill: #fff;
+  vertical-align: center;
+  height: 30px;
+}
+
 .pick-options {
   display: flex;
   flex-direction: row;
@@ -44,6 +58,10 @@ img, svg {
   border-radius: 5px;
   border-color: #4d4d4d;
   left: 20px;
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 .preview-below {
