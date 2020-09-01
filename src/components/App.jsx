@@ -14,9 +14,7 @@ function App() {
         <Nav />
         <Score />
         <Picks />
-        Possible Maindeck:
         <Deck />
-        Likely Sideboard:
         <Sideboard />
         <Info />
       </header>

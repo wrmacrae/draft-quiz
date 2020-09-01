@@ -213,7 +213,8 @@ img.card-big {
 }
 
 .info {
+  background: #000;
   bottom: 5px;
-  position: absolute;
+  position: fixed;
   font-size: calc(6px + 1.2vmin);
 }

@@ -4,7 +4,12 @@ import { connect } from 'react-redux'
 
 export class Sideboard extends React.PureComponent {
   render() {
-    return <div className="deck">
+    if (this.props.sideboard.length == 0) {
+      return "";
+    }
+    return <div>
+      Likely Sideboard:
+      <div className="deck">
       {this.props.sideboard.map((column, index) => { 
         return <div className="pile" key={index}>
           {column.map((card,cindex) => {
@@ -14,10 +19,11 @@ export class Sideboard extends React.PureComponent {
               <div className="card-big preview-above">
                 <img className="card-big" src={card} />
               </div>
-            </div>;
+            </div>
           })}
-        </div>;
+        </div>
       })}
+      </div>
     </div>;
   } 
 }
