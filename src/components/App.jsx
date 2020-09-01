@@ -5,6 +5,7 @@ import Score from './Score';
 import Picks from './Picks';
 import Deck from './Deck';
 import Sideboard from './Sideboard';
+import Info from './Info';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Deck />
         Likely Sideboard:
         <Sideboard />
+        <Info />
       </header>
     </div>
   );

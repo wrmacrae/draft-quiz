@@ -189,24 +189,31 @@ img.card-big {
 }
 
 .deck {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .pile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .under {
-    width: 149px;
-    height: 26px;
-    object-fit: cover;
-    object-position: top;
+  width: 149px;
+  height: 26px;
+  object-fit: cover;
+  object-position: top;
 }
+
 .over {
-    width: 149px;
-    height: 208px;
-    object-position: top;
+  width: 149px;
+  height: 208px;
+  object-position: top;
+}
+
+.info {
+  bottom: 5px;
+  position: absolute;
+  font-size: calc(6px + 1.2vmin);
 }
