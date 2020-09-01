@@ -6,13 +6,17 @@ import { connect } from 'react-redux'
 
 export class Info extends React.PureComponent {
   render() {
+    if (this.props.draft.record) {
+      var results = " Deck went " + this.props.draft.record + " in " + this.props.draft.type + " Draft.";
+    }
     return <div className="info">
-      Draft from <a href="http://www.17lands.com/trophies">www.17lands.com/trophies</a>, eventual deck went 7-0.
+      Draft from {this.props.draft.source === "trophy" ? "17lands" : "Lords of Limited"}.{results ? results : ""}
     </div>;
   }
 }
 
 const mapStateToProps = state => ({
+  draft: state.draft
 });
 
 const mapDispatchToProps = dispatch => ({
