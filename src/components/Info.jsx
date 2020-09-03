@@ -10,7 +10,7 @@ export class Info extends React.PureComponent {
       var results = " Deck went " + this.props.draft.record + " in " + this.props.draft.type + " Draft.";
     }
     return <div className="info">
-      Draft from {this.props.draft.source === "trophy" ? "17lands" : "Lords of Limited"}.{results ? results : ""}
+      Draft from {this.props.draft.source}.{results}
     </div>;
   }
 }
