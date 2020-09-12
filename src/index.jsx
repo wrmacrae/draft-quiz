@@ -4,6 +4,8 @@ import './index.css';
 import App from './components/App'
 import reducer from './reducer'
 import { setDraft } from './actions'
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import _ from 'lodash';
 
 function getId() {
@@ -19,7 +21,12 @@ function getId() {
   return ids[Math.floor(Math.random() * ids.length)];  
 }
 
+
+const store = createStore(reducer, reducer({}, setDraft(getId())));
+
 render(
-  <App />
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
