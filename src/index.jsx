@@ -20,6 +20,6 @@ function getId() {
 }
 
 render(
-  <App />,
+  <App />
   document.getElementById('root')
 );
