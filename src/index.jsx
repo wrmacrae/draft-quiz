@@ -14,7 +14,7 @@ function getId() {
     return idFromParam
   }
   const setFromParam = (new URLSearchParams(window.location.search)).get('set');
-  const set = setFromParam || "AKR";
+  const set = setFromParam || "ZNR";
   var logs = require('./logs');
   logs = _.pickBy(logs, log => log.set === set);
   const ids = Object.keys(logs);
