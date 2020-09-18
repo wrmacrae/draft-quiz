@@ -20,10 +20,12 @@ export class Picks extends React.PureComponent {
       const randomQuiz = window.location.href.split('?')[0];
       const thisQuiz = randomQuiz + "?id=" + this.props.id;
       const log = "https://www.17lands.com/draft/" + this.props.id;
+      const deck = "https://www.17lands.com/deck/" + this.props.id;
       return <div>
-        <div>Random Quiz: <a href={randomQuiz}>{randomQuiz}</a></div>
+        <div>New Quiz: <a href={randomQuiz}>{randomQuiz}</a></div>
         <div>This Quiz: <a href={thisQuiz}>{thisQuiz}</a></div>
         <div>Draft Log: <a href={log}>{log}</a></div>
+        <div>Final Deck: <a href={deck}>{deck}</a></div>
       </div>;
     }
     return <div>
