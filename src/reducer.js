@@ -6,7 +6,7 @@ function setDraft(state = {}, id) {
   const cards = log.picks[0].available;
   const answer = log.picks[0].pick;
   return {
-    "pickNumber": 40,
+    "pickNumber": 0,
     "guess": "",
     "answer": answer,
     "cards": cards,
