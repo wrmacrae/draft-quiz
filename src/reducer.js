@@ -1,23 +1,58 @@
 import { SET_DRAFT, MAKE_GUESS, MAKE_PICK } from './actions'
 
+const getPicks = async (id) => {
+    const response = await fetch("https://www.17lands.com/data/draft/?draft_id=" + id)
+    const json = await response.json()
+    return json.picks
+
+}
+
+function isLoading(state = {}, id) {
+  console.log("loading");
+  return Object.assign({}, state, {
+    loading: true
+  })
+}
+
+function loadDraftSuccess(state = {}, id, json) {
+  console.log("loaded");
+  if (state.id === id && state.loading) {
+    return Object.assign({}, state, {
+      loading: false,
+      picks: json.picks,
+      cards: json.picks[0].available,
+      answer: json.picks[0].pick,
+      deck: [],
+      sidebaord: [],
+      score: {
+        right: 0,
+        total: 0 
+      },
+      pickNumber: 0,
+      guess: "",
+      draft: json,
+    });
+  } else {
+    return state;
+  }
+}
+
 function setDraft(state = {}, id) {
-  const logs = require('./logs');
-  const log = logs[id];
-  const cards = log.picks[0].available;
-  const answer = log.picks[0].pick;
-  return {
-    "pickNumber": 0,
-    "guess": "",
-    "answer": answer,
-    "cards": cards,
-    "deck": [],
-    "sideboard": [],
-    "score": {
-      "right": 0,
-      "total": 0 
-    },
-    "draft": log,
-    "id": id
+  console.log("setDraft");
+  return (dispatch) => {
+    const logs = require('./logs');
+    const log = logs[id];
+    dispatch(isLoading(id));
+    if (log.picks === undefined) {
+      fetch("https://www.17lands.com/data/draft/?draft_id=" + id)
+      .then(res => res.json())
+      .then((json) => {
+        dispatch(loadDraftSuccess(id, json));
+      })
+      .catch(err => { throw err });
+    } else {
+      dispatch(loadDraftSuccess(id, log))
+    }
   };
 }
 
