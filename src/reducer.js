@@ -1,8 +1,43 @@
-import { SET_DRAFT, MAKE_GUESS, MAKE_PICK } from './actions'
-
-function setDraft(state = {}, id) {
+function draft(state = {}, id) {
   const logs = require('./logs');
   const log = logs[id];
+  if (log.picks === undefined) {
+    return isLoading(state, id);
+  } else {
+    return setDraftWithData(state, id, log)
+  }
+}
+
+function isLoading(state = {}, id) {
+  return Object.assign({}, state, {
+    loading: true,
+    "score": {
+      "right": 0,
+      "total": 0 
+    },
+    "deck": [],
+    "sideboard": [],
+    id: id,
+  })  
+}
+
+function fetchDataSuccess(state = {}, id, json) {
+  if (state.id === id && state.loading) {
+    return Object.assign({}, state, {
+      loading: false,
+      picks: json.picks,
+      cards: json.picks[0].available,
+      answer: json.picks[0].pick,
+      pickNumber: 0,
+      guess: "",
+      draft: json,
+    });
+  } else {
+    return state;
+  }
+}
+
+function setDraftWithData(state = {}, id, log) {
   const cards = log.picks[0].available;
   const answer = log.picks[0].pick;
   return {
@@ -50,11 +85,36 @@ function pick(state) {
     },
   })
 }
+/*
+ * action types
+ */
+
+export const SET_DRAFT = 'SET_DRAFT';
+export const MAKE_GUESS = 'MAKE_GUESS';
+export const MAKE_PICK = 'MAKE_PICK';
+
+/*
+ * action creators
+ */
+
+export function setDraft(id) {
+  return (dispatch, getState) => {
+    return draft(getState(), id);
+  };
+}
+
+export function makeGuess(guess) {
+  return { type: MAKE_GUESS, guess };
+}
+
+export function makePick(guess) {
+  return { type: MAKE_PICK, guess };
+}
 
 export default function(state = {}, action) {
   switch(action.type) {    
   case SET_DRAFT:
-    return setDraft(state, action.id);
+    return draft(state, action.id);
   case MAKE_GUESS:
     return guess(state, action.guess);
   case MAKE_PICK:
