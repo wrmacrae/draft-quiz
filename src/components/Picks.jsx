@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeGuess, makePick } from '../actions';
+import { makeGuess, makePick } from '../reducer';
 import '../styles.css';
 import { connect } from 'react-redux'
 
@@ -16,7 +16,9 @@ export class Picks extends React.PureComponent {
     }, 2000)  }
 
   render() {
-    if (this.props.cards.length === 0) {
+    if (this.props.loading) {
+      return <div>Loading...</div>;
+    } else if (this.props.cards.length === 0) {
       const randomQuiz = window.location.href.split('?')[0];
       const thisQuiz = randomQuiz + "?id=" + this.props.id;
       const log = "https://www.17lands.com/draft/" + this.props.id;
@@ -60,6 +62,7 @@ export class Picks extends React.PureComponent {
 }
 
 const mapStateToProps = state => ({
+  loading: state.loading,
   cards: state.cards,
   id: state.id,
   guess: state.guess,

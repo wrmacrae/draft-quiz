@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeGuess, makePick } from '../actions';
 import '../styles.css';
 import { connect } from 'react-redux'
 
@@ -51,10 +50,4 @@ export class Nav extends React.PureComponent {
   }
 }
 
-const mapStateToProps = state => ({
-});
-
-const mapDispatchToProps = dispatch => ({
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+export default (Nav);
