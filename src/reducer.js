@@ -1,10 +1,14 @@
-import { SET_DRAFT, MAKE_GUESS, MAKE_PICK } from './actions'
+import { SET_DRAFT, SET_DRAFT_WITH_DATA, MAKE_GUESS, MAKE_PICK } from './actions'
 
 function setDraft(state = {}, id) {
   const logs = require('./logs');
   const log = logs[id];
-  const cards = log.picks[0].available;
-  const answer = log.picks[0].pick;
+  return setDraftWithData(state, id, log);
+}
+
+function setDraftWithData(state = {}, id, data) {
+  const cards = data.picks[0].available;
+  const answer = data.picks[0].pick;
   return {
     "pickNumber": 0,
     "guess": "",
@@ -16,7 +20,7 @@ function setDraft(state = {}, id) {
       "right": 0,
       "total": 0 
     },
-    "draft": log,
+    "draft": data,
     "id": id
   };
 }
@@ -55,6 +59,8 @@ export default function(state = {}, action) {
   switch(action.type) {    
   case SET_DRAFT:
     return setDraft(state, action.id);
+  case SET_DRAFT_WITH_DATA:
+    return setDraftWithData(state, action.id, action.data);
   case MAKE_GUESS:
     return guess(state, action.guess);
   case MAKE_PICK:
