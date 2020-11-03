@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Nav from './Nav';
 import Score from './Score';
 import Picks from './Picks';
