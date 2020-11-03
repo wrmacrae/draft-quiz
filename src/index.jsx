@@ -1,7 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 import './index.css';
+import './styles.css';
 import App from './components/App'
+import Nav from './components/Nav'
 import reducer from './reducer'
 import { setDraft, setDraftWithData } from './actions'
 import { createStore } from 'redux';
@@ -21,7 +23,7 @@ function getId() {
   return ids[Math.floor(Math.random() * ids.length)];  
 }
 
-render(<div>Loading</div>, document.getElementById('root'));
+render(<div className="App"><Nav /><div className="Score">Loading...</div></div>, document.getElementById('root'));
 
 const id = getId();
 var logs = require('./logs');

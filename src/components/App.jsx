@@ -10,14 +10,12 @@ import Info from './Info';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Nav />
-        <Score />
-        <Picks />
-        <Deck />
-        <Sideboard />
-        <Info />
-      </header>
+      <Nav />
+      <Score />
+      <Picks />
+      <Deck />
+      <Sideboard />
+      <Info />
     </div>
   );
 }
