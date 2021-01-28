@@ -4,6 +4,7 @@ import '../styles.css';
 export default class Nav extends React.PureComponent {
   render() {
     const path = window.location.href.split('?')[0];
+    const khmQuiz = path + "?set=KHM";
     const znrQuiz = path + "?set=ZNR";
     const akrQuiz = path + "?set=AKR";
     const m21Quiz = path + "?set=M21";
@@ -13,6 +14,10 @@ export default class Nav extends React.PureComponent {
     const cubQuiz = path + "?set=CUB";
     const atcQuiz = path + "?set=ATC";
     return <nav className="navbar">
+      <a className="tooltip" href={khmQuiz}>
+        <svg className="set-icon" viewBox="0 0 13 14" xmlns="http://www.w3.org/2000/svg"><path d="M6.497 13.995c-.817-.015-1.397-.242-1.74-.68.305-.21.553-.473.744-.79-.295-.017-.488-.087-.58-.21.69-.701 1.008-1.59.955-2.666V6.577H4.593c-.398.373-.73.707-1 1.002-.268.294-.424.58-.465.854-.9-1.27-1.14-2.795-.718-4.577-.883 2.336-.418 4.325 1.395 5.967-.298.741-.863 1.36-1.694 1.858.162-1.352-.455-2.63-1.849-3.835-.369-1.798-.345-3.484.072-5.06C.744 1.796 1.802.868 3.51.003l-.375 2.414 1.457 1.46H5.74v-.41l.758-1.934.759 1.934v.41h1.146l1.457-1.46L9.484.003c1.709.865 2.768 1.793 3.177 2.783.417 1.576.44 3.262.072 5.06-1.394 1.204-2.01 2.483-1.85 3.835-.83-.497-1.395-1.117-1.693-1.858 1.813-1.642 2.278-3.63 1.395-5.967.422 1.782.182 3.308-.718 4.577-.041-.275-.197-.56-.465-.854a18.332 18.332 0 00-1-1.002H7.119V9.65c-.053 1.077.265 1.965.955 2.665-.092.124-.286.194-.58.21.19.318.439.581.745.79-.344.44-.924.666-1.742.681"></path></svg>
+        <span className="tooltiptext">Kaldheim</span>
+      </a>
       <a className="tooltip" href={znrQuiz}>
         <svg className="set-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 32"><path d="M.291 6.184L7.287 0l3.559 4.028-6.996 6.184L.291 6.184zm27.929 0l-3.559 4.028-6.996-6.184L21.224 0l6.996 6.184zM0 22.183l3.254-3.066 5.378 7.504-2.447 2.152L0 22.184zm28.5 0l-3.254-3.066-5.378 7.504 2.447 2.152 6.185-6.589zm-2.07-7.684l-7.591.798-4.555 6.617-4.547-6.606-7.648-.804L14.284 32 26.43 14.499zM14.284 3.034L2.087 13.791l7.739.814 4.459-3.986 4.448 3.977 7.692-.809-12.14-10.752z"></path></svg>
         <span className="tooltiptext">Zendikar Rising</span>
